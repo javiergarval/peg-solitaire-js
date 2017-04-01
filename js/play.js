@@ -6,7 +6,7 @@ function createBoard() {
     document.getElementById('welcome-container').style.display = 'none';
     document.getElementById('game-container').style.display = 'block';
 
-    var gap = prompt('Gap position', '');
+    var gap = prompt('Gap position', 'pos-4-4');
 
     var board = document.getElementById('board');
     var html = "";
@@ -135,6 +135,7 @@ document.addEventListener("dragstart", function (event) {
         getPossibleMoves(event.target);
         event.target.style.border = 0;
     }
+    event.dataTransfer.setData('Text', this.id);
 ;}, false);
 
 document.addEventListener("dragend", function (event) {
