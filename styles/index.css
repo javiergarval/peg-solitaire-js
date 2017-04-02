@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #game-container, #place-container, #score-container, #about-container {
-    display: hidden;
+    display: none;
 }
 
 #game-container {
@@ -170,22 +170,27 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
 }
 
 .row {
     height: 10vh;
-    width: auto;
+    width: 100vw;
     list-style-type: none;
     margin: 0;
     padding: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .cell {
     height: 10vh;
     width: 10vh;
     display: inline-block;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -195,7 +200,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .ball {
     background: url('../images/ball.svg') center;
-    background-size: 70% 70%;
+    background-size: 4vw 4vw;
     background-repeat: no-repeat;
 }
 
