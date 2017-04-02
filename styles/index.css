@@ -4,51 +4,59 @@ body {
     min-height: 100vh;
     width: 100vw;
     background: #F1D67F;
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    overflow-y: hidden;
+
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.5em;
+    font-size: 14px;
+
+    overflow-y: hidden;
 }
 
-h1 {
-    text-align: center;
-    color: #333333;
-    font-size: 2em;
-}
-
-h2 {
-    text-align: center;
-    color: #333333;
-    font-size: 1em;
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 auto;
+    padding: 1vw;
 }
 
 .wrapper {
+    margin: 0;
+    padding: 0;    
     height: 100vh;
     width: 100vw;
-    margin: 0;
-    padding: 0;
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-}
-
-#play h1, #place h1, #score h1 {
-    font-size: 1em;
 }
 
 #container {
     background: #D9BE85;
+    margin: 0;
+    padding: 1vw;
     min-height: 70vh;
     width: 70vw;
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: stretch;
-    border-radius: 2vh;
+    border-radius: 15px;
+}
+
+#container h1 {
+    text-align: center;
+    color: #333333;
+    font-size: 300%;
+}
+
+#container h2 {
+    text-align: center;
+    color: #333333;
+    font-size: 130%;
 }
 
 #welcome {
@@ -56,6 +64,10 @@ h2 {
     flex-direction: row;
     justify-content: space-around;
     align-items: baseline;
+}
+
+#play h1, #place h1, #score h1, #about h1 {
+    font-size: 100%;
 }
 
 .option {
@@ -94,8 +106,8 @@ h2 {
     pointer-events: none;
 }
 
-#game-container, #place-container, #score-container {
-    display: none;
+#game-container, #place-container, #score-container, #about-container {
+    display: hidden;
 }
 
 #game-container {
