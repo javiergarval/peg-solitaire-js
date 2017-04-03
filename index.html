@@ -16,21 +16,19 @@
 <body>
 
     <section id="welcome-container" class="wrapper">
-        <section id="container">
+        <section class="container">
             <h1>Welcome to Peg Solitarie!</h1>
             <h2>Please choose your option:</h2>
             <section id="welcome">
                 <section id="play" class="option">
                     <h1>Play</h1>
-                    <a href="#game-container">
-                        <div class="round-btn" onclick="createBoard()">
-                            <svg width="40%" height="40%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                x="0px" y="0px" viewBox="0 0 41.999 41.999" style="enable-background:new 0 0 41.999 41.999;"xml:space="preserve"><path d="M36.068,20.176l-29-20C6.761-0.035,6.363-0.057,6.035,0.114C5.706,0.287,5.5,0.627,5.5,0.999v40
-	c0,0.372,0.206,0.713,0.535,0.886c0.146,0.076,0.306,0.114,0.465,0.114c0.199,0,0.397-0.06,0.568-0.177l29-20
-	c0.271-0.187,0.432-0.494,0.432-0.823S36.338,20.363,36.068,20.176z" />
-                            </svg>
-                        </div>
-                    </a>
+                    <div class="round-btn" onclick="chooseOptions()">
+                        <svg width="40%" height="40%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            x="0px" y="0px" viewBox="0 0 41.999 41.999" style="enable-background:new 0 0 41.999 41.999;"xml:space="preserve"><path d="M36.068,20.176l-29-20C6.761-0.035,6.363-0.057,6.035,0.114C5.706,0.287,5.5,0.627,5.5,0.999v40
+c0,0.372,0.206,0.713,0.535,0.886c0.146,0.076,0.306,0.114,0.465,0.114c0.199,0,0.397-0.06,0.568-0.177l29-20
+c0.271-0.187,0.432-0.494,0.432-0.823S36.338,20.363,36.068,20.176z" />
+                        </svg>
+                    </div>
                 </section>
 
                 <section id="place" class="option">
@@ -110,6 +108,32 @@
         </section> <!-- /#welcome-container -->
     </section>
 
+    <section id="options-container" class="wrapper">
+        <section class="container">
+            <h1>Choose options:</h1>
+                <section id="options">
+                    <section>
+                        <label for="default-gap">Default Gap (middle board)</label>
+                        <input id="default-gap" type="radio" name="gap" value="pos-4-4" required>
+                    </section>
+                    <section>
+                        <label for="random-gap">Random Gap</label>
+                        <input id="random-gap" type="radio" name="gap" value="random" required>
+                    </section>
+                    <section>
+                        <label for="timer-option">Time (in minutes):</label>
+                        <input type="number" name="timer-option" placeholder="0 or blank timeless" required>
+                    </section>
+                    <section id="btn">
+                        <a href="index.html">
+                            <button class="btn">Back</button>
+                        </a>
+                        <button class="btn" onclick="createBoard()">Play!</button>
+                    </section>
+                </section>
+        </section>
+    </section>
+
     <section id="game-container" class="wrapper">
             <section id="game-options">
                 <section id="game-back">
@@ -123,16 +147,16 @@
                 </section>
             </section>
             <div id="board"></div>
-    </section>
+    </section> <!-- /#game-container -->
 
     <section id="place-container" class="wrapper">
-    </section>
+    </section> <!-- /#place-container -->
 
     <section id="score-container" class="wrapper">
-    </section>
+    </section> <!-- /#score-container -->
 
     <section id="about-container" class="wrapper">
-    </section>    
+    </section>  <!-- /#about-container -->   
 
 </body>
 

@@ -18,7 +18,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
-    padding: 1vw;
+    padding: 1em;
 }
 
 .wrapper {
@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
-#container {
+.container {
     background: #D9BE85;
     margin: 0;
     padding: 1vw;
@@ -47,13 +47,13 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 15px;
 }
 
-#container h1 {
+.container h1 {
     text-align: center;
     color: #333333;
     font-size: 300%;
 }
 
-#container h2 {
+.container h2 {
     text-align: center;
     color: #333333;
     font-size: 130%;
@@ -75,7 +75,6 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column-reverse;
     justify-content: space-around;
     align-items: center;
-
 }
 
 .round-btn {
@@ -109,6 +108,42 @@ h1, h2, h3, h4, h5, h6 {
 #game-container, #place-container, #score-container, #about-container {
     display: none;
 }
+
+#options-container {
+
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#options section {
+    margin: 2vh;
+    align-self: stretch;
+}
+
+#btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn {
+    height: 10vh;
+    width: 15vw;
+    background: #955BA5;
+    border: 0;
+    border-radius: 15px;
+}
+
+/*
+    GAME CONTAINER
+    ==============================
+*/
 
 #game-container {
     margin: 0;
@@ -170,19 +205,19 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
 }
 
 .row {
     height: 10vh;
-    width: 100vw;
+    max-width: 90%;
     list-style-type: none;
     margin: 0;
     padding: 0;
 
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -195,12 +230,12 @@ h1, h2, h3, h4, h5, h6 {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    border-radius: 70px;
+    border-radius: 10vh;
 }
 
 .ball {
     background: url('../images/ball.svg') center;
-    background-size: 4vw 4vw;
+    background-size: 6vh;
     background-repeat: no-repeat;
 }
 
@@ -213,3 +248,12 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
+/*
+    /GAME CONTAINER
+    ==============================
+*/
+
+#place-container {}
+#score-container {}
+#about-container {}

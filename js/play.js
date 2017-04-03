@@ -1,12 +1,40 @@
+/*
+    Global variables
+*/
+var clicked; // The ball that is been clicked
+var dragged; // The ball that is been dragged
+var ballsList = document.getElementsByClassName('ball'); // All the elements with class='ball'
+var gapsList = document.getElementsByClassName('gap'); // All the elements with class="gap"
+var neighbourGaps; // The immediate gap neighbours of clicked & dragged
+var gap;
+var time;
+
+function chooseOptions() {
+    /*
+        Choose Gap position & Time
+    */
+    document.getElementById('welcome-container').style.display = 'none';
+    document.getElementById('options-container').style.display = 'flex';
+
+   if(document.getElementById('default-gap').checked == true) {
+       gap = document.getElementById('default-gap').value;
+   } else if(document.getElementById('random-gap').checked == true) {
+       var row = Math.floor((Math.random() * 2) + 1);
+       var column = Math.floor((Math.random() * 2) + 1);
+       gap = "pos-" + row + "-" + column;
+   }
+
+   return gap;
+
+}
+
 function createBoard() {
     /*
         Creates the board structure
     */
 
-    document.getElementById('welcome-container').style.display = 'none';
-    document.getElementById('game-container').style.display = 'block';
-
-    var gap = prompt('Gap position', 'pos-4-4');
+    document.getElementById('options-container').style.display = 'none';
+    document.getElementById('game-container').style.display = 'flex';
 
     var board = document.getElementById('board');
     var html = "";
@@ -33,15 +61,6 @@ function createBoard() {
     board.innerHTML = html;
     document.getElementById(gap).className = 'cell gap';
 }
-
-/*
-    Global variables
-*/
-var clicked; // The ball that is been clicked
-var dragged; // The ball that is been dragged
-var ballsList = document.getElementsByClassName('ball'); // All the elements with class='ball'
-var gapsList = document.getElementsByClassName('gap'); // All the elements with class="gap"
-var neighbourGaps; // The immediate gap neighbours of clicked & dragged
 
 function getPossibleMoves(cell) {
     /*
@@ -174,10 +193,10 @@ document.addEventListener("drop", function (event) {
         if(event.target.id == neighbourGaps[i]) {
             // The gap converts to a ball
             event.target.className = 'cell ball';
-            // event.target.style.border = 0;
-            // event.target.style.background = "url('images/ball.svg') center";
-            // event.target.style.backgroundSize = '4vw 4vw';
-            // event.target.style.backgroundRepeat = 'no-repeat';
+            event.target.style.border = 0;
+            event.target.style.background = "url('images/ball.svg') center";
+            event.target.style.backgroundSize = '6vh';
+            event.target.style.backgroundRepeat = 'no-repeat';
             event.target.addEventListener('onclick', showPossibleMoves);
         
             // The dragged ball converts to a gap
@@ -193,29 +212,29 @@ document.addEventListener("drop", function (event) {
                 case row == -2 && column == 0:
                     id = "pos-" + parseInt(dragRow - 1) + "-" + parseInt(dragColumn);
                     document.getElementById(id).className = 'cell gap';
-                    // document.getElementById(id).style.border = '5px solid #F1D67F';
-                    // document.getElementById(id).style.background = '#D8BF7D';
+                    document.getElementById(id).style.border = '5px solid #F1D67F';
+                    document.getElementById(id).style.background = '#D8BF7D';
                     document.getElementById(id).removeEventListener('onclick', showPossibleMoves);
                 break;
                 case row = 2 && column == 0:
                     id = "pos-" + parseInt(dragRow + 1) + "-" + parseInt(dragColumn);
                     document.getElementById(id).className = 'cell gap';
-                    // document.getElementById(id).style.border = '5px solid #F1D67F';
-                    // document.getElementById(id).style.background = '#D8BF7D';
+                    document.getElementById(id).style.border = '5px solid #F1D67F';
+                    document.getElementById(id).style.background = '#D8BF7D';
                     document.getElementById(id).removeEventListener('onclick', showPossibleMoves);
                 break;
                 case row == 0 && column == -2:
                     id = "pos-" + parseInt(dragRow) + "-" + parseInt(dragColumn - 1);
                     document.getElementById(id).className = 'cell gap';
-                    // document.getElementById(id).style.border = '5px solid #F1D67F';
-                    // document.getElementById(id).style.background = '#D8BF7D';
+                    document.getElementById(id).style.border = '5px solid #F1D67F';
+                    document.getElementById(id).style.background = '#D8BF7D';
                     document.getElementById(id).removeEventListener('onclick', showPossibleMoves);
                 break;
                 case row == 0 && column == 2:
                     id = "pos-" + parseInt(dragRow) + "-" + parseInt(dragColumn + 1);
                     document.getElementById(id).className = 'cell gap';
-                    // document.getElementById(id).style.border = '5px solid #F1D67F';
-                    // document.getElementById(id).style.background = '#D8BF7D';
+                    document.getElementById(id).style.border = '5px solid #F1D67F';
+                    document.getElementById(id).style.background = '#D8BF7D';
                     document.getElementById(id).removeEventListener('onclick', showPossibleMoves);
                 break;
             }
