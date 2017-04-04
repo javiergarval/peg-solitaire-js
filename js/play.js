@@ -7,7 +7,10 @@ var ballsList = document.getElementsByClassName('ball'); // All the elements wit
 var gapsList = document.getElementsByClassName('gap'); // All the elements with class="gap"
 var neighbourGaps; // The immediate gap neighbours of clicked & dragged
 var gap;
-var time;
+var time = 0;
+var score = 0;
+var displayTime;
+var displayScore; 
 
 function chooseOptions() {
     /*
@@ -15,17 +18,6 @@ function chooseOptions() {
     */
     document.getElementById('welcome-container').style.display = 'none';
     document.getElementById('options-container').style.display = 'flex';
-
-   if(document.getElementById('default-gap').checked == true) {
-       gap = document.getElementById('default-gap').value;
-   } else if(document.getElementById('random-gap').checked == true) {
-       var row = Math.floor((Math.random() * 2) + 1);
-       var column = Math.floor((Math.random() * 2) + 1);
-       gap = "pos-" + row + "-" + column;
-   }
-
-   return gap;
-
 }
 
 function createBoard() {
@@ -33,12 +25,28 @@ function createBoard() {
         Creates the board structure
     */
 
+   if(document.getElementById('default-gap').checked == true) {
+       gap = document.getElementById('default-gap').value;
+   } else if(document.getElementById('random-gap').checked == true) {
+       var row = Math.floor((Math.random() * 7) + 1);
+       var column = Math.floor((Math.random() * 7) + 1);
+       gap = "pos-" + row + "-" + column;
+   }
+
+   if(document.getElementById('timer-option').value != "") {
+       time = document.getElementById('timer-option').value;
+   } else {
+       time = 'Timeless';
+   }
+
+
     document.getElementById('options-container').style.display = 'none';
     document.getElementById('game-container').style.display = 'flex';
 
     var board = document.getElementById('board');
     var html = "";
     var id = "";
+    
 
     for (var row = 1; row <= 7; row++) {
         html += "<ul class='row'>"
@@ -60,6 +68,9 @@ function createBoard() {
 
     board.innerHTML = html;
     document.getElementById(gap).className = 'cell gap';
+    displayTime = document.getElementById('display-time');
+    displayScore = document.getElementById('display-score');
+    displayTime.appendChild(document.createTextNode(time));
 }
 
 function getPossibleMoves(cell) {
@@ -72,7 +83,7 @@ function getPossibleMoves(cell) {
     var row = parseInt(cell.id.slice(4, 5)); // Cell's row
     var column = parseInt(cell.id.slice(6, 7)); // Cell's column
 
-    // If the nearest neighbour to cell is a ball and next to it there is a gap, save it to neighbourGaps
+    // If the nearest neighbour to cell is a ball and next to it is a gap, save it to neighbourGaps
     var upBall = "pos-" + parseInt(row - 1) + "-" + column;
     var downBall = "pos-" + parseInt(row + 1) + "-" + column;
     var rightBall = "pos-" + row + "-" + parseInt(column + 1);
@@ -249,6 +260,7 @@ document.addEventListener("drop", function (event) {
         }       
     }
 
-    return false;
+    score += 15;
+    document.getElementById('display-score').innerHTML = score;
 
 }, false);
