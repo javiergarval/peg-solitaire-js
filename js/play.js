@@ -3,8 +3,8 @@
 */
 var clicked; // The ball that is been clicked
 var dragged; // The ball that is been dragged
-var ballsList = document.getElementsByClassName('ball'); // All the elements with class='ball'
-var gapsList = document.getElementsByClassName('gap'); // All the elements with class="gap"
+var ballsList; // All the elements with class='ball'
+var gapsList; // All the elements with class="gap"
 var neighbourGaps; // The immediate gap neighbours of clicked & dragged
 var gap;
 var time = 0;
@@ -14,40 +14,42 @@ var displayScore;
 
 function chooseOptions() {
     /*
-        Choose Gap position & Time
+        Display the options section for choosing Gap position & Time
     */
-    document.getElementById('welcome-container').style.display = 'none';
-    document.getElementById('options-container').style.display = 'flex';
+    document.getElementById('welcome').style.display = 'none';
+    document.getElementById('play-options').style.display = 'flex';
 }
 
 function createBoard() {
     /*
         Creates the board structure
     */
+    // Retrieve the options from chooseOptions()
+    if(document.getElementById('default-gap').checked == true) {
+        gap = document.getElementById('default-gap').value;
+    } else if(document.getElementById('random-gap').checked == true) {
+        var row = Math.floor((Math.random() * 7) + 1);
+        var column = Math.floor((Math.random() * 7) + 1);
+        gap = "pos-" + row + "-" + column;
+    }
 
-   if(document.getElementById('default-gap').checked == true) {
-       gap = document.getElementById('default-gap').value;
-   } else if(document.getElementById('random-gap').checked == true) {
-       var row = Math.floor((Math.random() * 7) + 1);
-       var column = Math.floor((Math.random() * 7) + 1);
-       gap = "pos-" + row + "-" + column;
-   }
+    if(document.getElementById('timer-option').value != "") {
+        time = document.getElementById('timer-option').value;
+    } else {
+        time = 'Timeless';
+    }
 
-   if(document.getElementById('timer-option').value != "") {
-       time = document.getElementById('timer-option').value;
-   } else {
-       time = 'Timeless';
-   }
+    // Display game container
+    document.getElementById('play-options').style.display = 'none';
+    document.getElementById('play-container').style.display = 'flex';
 
-
-    document.getElementById('options-container').style.display = 'none';
-    document.getElementById('game-container').style.display = 'flex';
+    console.log(document.getElementById('display-score'));
 
     var board = document.getElementById('board');
     var html = "";
     var id = "";
     
-
+    // Building the board
     for (var row = 1; row <= 7; row++) {
         html += "<ul class='row'>"
         for (var column = 1; column <= 7; column++) {
@@ -71,6 +73,9 @@ function createBoard() {
     displayTime = document.getElementById('display-time');
     displayScore = document.getElementById('display-score');
     displayTime.appendChild(document.createTextNode(time));
+    ballsList = document.getElementsByClassName('ball');
+    gapsList  = document.getElementsByClassName('gap');
+
 }
 
 function getPossibleMoves(cell) {
@@ -154,7 +159,6 @@ function showPossibleMoves(cell) {
     }
 }
 
-/* Events fired on the draggable target */
 document.addEventListener("drag", function (event) {
 }, false);
 
@@ -171,7 +175,6 @@ document.addEventListener("dragstart", function (event) {
 document.addEventListener("dragend", function (event) {
 }, false);
 
-/* events fired on the drop targets */
 document.addEventListener("dragover", function (event) {
     // prevent default to allow drop
     event.preventDefault();
@@ -185,7 +188,6 @@ document.addEventListener("dragleave", function (event) {
 
 document.addEventListener("drop", function (event) {
     // prevent default action (open as link for some elements)
-
     if(event.preventDefault) { event.preventDefault(); }
     if(event.stopPropagation) { event.stopPropagation(); }
 
@@ -199,7 +201,6 @@ document.addEventListener("drop", function (event) {
     var column = dropColumn - dragColumn
     var id;
 
-    // move dragged elem to the selected drop target
     for(var i = 0; i < neighbourGaps.length; i++) { 
         if(event.target.id == neighbourGaps[i]) {
             // The gap converts to a ball
@@ -218,7 +219,7 @@ document.addEventListener("drop", function (event) {
             document.getElementById(dragged).style.backgroundRepeat = 0;
             document.getElementById(dragged).removeEventListener('onclick', showPossibleMoves);
 
-            // The middle ball gets eaten
+            // The ball in the middle gets eaten.
             switch(true) {
                 case row == -2 && column == 0:
                     id = "pos-" + parseInt(dragRow - 1) + "-" + parseInt(dragColumn);
@@ -249,18 +250,20 @@ document.addEventListener("drop", function (event) {
                     document.getElementById(id).removeEventListener('onclick', showPossibleMoves);
                 break;
             }
+            // If the movement is correct, sum +15 to score.
+            score += 15;
+            document.getElementById('display-score').innerHTML = score;
         }
     }
 
+    // If there is a previous click, remove the border style and add default border to the dragged ball.
     if(clicked != undefined ) {
         document.getElementById(clicked[0].id).style.border = 0;
         document.getElementById(dragged).style.border = '5px solid #F1D67F';
+        // Also, give the default border to all the gaps.
         for(var i = 0; i < gapsList.length; i++) {
             document.getElementById(gapsList[i].id).style.border = '5px solid #F1D67F';
         }       
     }
-
-    score += 15;
-    document.getElementById('display-score').innerHTML = score;
 
 }, false);

@@ -1,18 +1,7 @@
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    width: 100vw;
     background: #F1D67F;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
-
     overflow-y: hidden;
 }
 
@@ -21,16 +10,27 @@ h1, h2, h3, h4, h5, h6 {
     padding: .5em;
 }
 
-.wrapper {
+a {
+    text-align: center;
+}
+
+#play-options, #play-container, #place-container, #place-options, #score-container, #about-container {
+    display: none;
+}
+
+.margin-t-b {
+    margin: 2vh;
+}
+
+.margin-r-l {
+    margin: 2vw;
+}
+
+.window {
     margin: 0;
     padding: 0;    
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
 }
 
 .container {
@@ -39,11 +39,6 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1vw;
     min-height: 70vh;
     width: 70vw;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: stretch;
     border-radius: 15px;
 }
 
@@ -57,24 +52,6 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     color: #333333;
     font-size: 130%;
-}
-
-#welcome {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: baseline;
-}
-
-#play h1, #place h1, #score h1, #about h1 {
-    font-size: 100%;
-}
-
-.option {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-around;
-    align-items: center;
 }
 
 .round-btn {
@@ -101,98 +78,58 @@ h1, h2, h3, h4, h5, h6 {
     fill: #F1D67F
 }
 
+.radius-btn {
+    height: 10vh;
+    min-width: 20vw;
+    background: #55607E;
+    border: 0;
+    border-radius: 15px;
+    color: white;
+    font-size: 100%;
+}
+
+.radius-btn:hover {
+    background: #955BA5;
+}
+
+#play h1, #place h1, #score h1, #about h1 {
+    font-size: 100%;
+}
+
 #score a {
     pointer-events: none;
 }
 
-#game-container, #place-container, #score-container, #about-container {
-    display: none;
-}
-
-#options-container {
-
-}
-
-#options {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#options section {
-    margin: 2vh;
-    align-self: stretch;
-}
-
-#btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.btn {
-    height: 10vh;
-    width: 15vw;
-    background: #955BA5;
-    border: 0;
-    border-radius: 15px;
-}
-
-/*
-    GAME CONTAINER
-    ==============================
-*/
-
-#game-container {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
+#play-back, #play-timer, #play-score {
     width: 100vw;
-    background: #F1D67F;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#game-options {
-    margin: 0;
-    padding: 0;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-#game-back {
-    margin: 0;
-    padding: 0;
     height: 10vh;
-    width: 33.33vw;
+}
+
+#play-back {
     background: #D9BE85;
 }
 
-#game-timer {
-    margin: 0;
-    padding: 0;
-    height: 10vh;
-    width: 33.33vw;
+#play-back>a>svg {
+    fill: #55607C;
+}
+
+#play-back:hover {
+    background: #55607C;
+}
+
+#play-back:hover>a>svg {
+    fill: #D9BE85;
+}
+
+#play-timer {
     background: #8698C7;
 }
 
-#game-score {
-    margin: 0;
-    padding: 0;
-    height: 10vh;
-    width: 33.33vw;
+#play-score {
     background: #55607E;
 }
 
-#board {
+#board, #empty-board {
     margin: 0;
     padding: 0;
     height: 90vh;
@@ -201,11 +138,6 @@ h1, h2, h3, h4, h5, h6 {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .row {
@@ -248,11 +180,6 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
-
-/*
-    /GAME CONTAINER
-    ==============================
-*/
 
 #place-container {}
 #score-container {}
