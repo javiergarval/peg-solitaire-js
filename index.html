@@ -2,43 +2,45 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="./styles/index.css">
-    <link rel="stylesheet" href="./styles/flex.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <script src="./js/play.js"></script>
-    <script src="./js/place.js"></script>
+	<link rel="stylesheet" href="./styles/index.css">
+	<link rel="stylesheet" href="./styles/flex.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<script src="./js/play.js"></script>
+	<script src="./js/place.js"></script>
 
-    <title>JavierGarval - Peg Solitaire</title>
+	<title>JavierGarval - Peg Solitaire</title>
 </head>
 
 <body class="window flex-col-sa-c">
 
-    <section id="welcome" class="window flex-col-sa-c">
-        <section class="container flex-col-sa-s">
-            <h1>Welcome to Peg Solitarie!</h1>
-            <h2>Please choose your option:</h2>
-            <section class="flex-row-sa-c">
-                <section id="play" class="flex-loc-sa-c">
-                    <h1>Play</h1>
-                    <div class="round-btn" onclick="chooseOptions();">
-                        <svg width="40%" height="40%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px" y="0px" viewBox="0 0 41.999 41.999" style="enable-background:new 0 0 41.999 41.999;"xml:space="preserve"><path d="M36.068,20.176l-29-20C6.761-0.035,6.363-0.057,6.035,0.114C5.706,0.287,5.5,0.627,5.5,0.999v40
+	<section id="welcome" class="window flex-col-sa-c">
+
+		<section class="container flex-col-sa-s">
+
+			<h1>Welcome to Peg Solitarie!</h1>
+			<h2>Please choose your option:</h2>
+
+			<section class="flex-row-sa-c">
+				<section id="play" class="flex-loc-sa-c">
+					<h1>Play</h1>
+					<div id="play-btn" class="round-btn" onclick="chooseOptions();">
+						<svg width="40%" height="40%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 41.999 41.999" style="enable-background:new 0 0 41.999 41.999;" xml:space="preserve"><path d="M36.068,20.176l-29-20C6.761-0.035,6.363-0.057,6.035,0.114C5.706,0.287,5.5,0.627,5.5,0.999v40
                         c0,0.372,0.206,0.713,0.535,0.886c0.146,0.076,0.306,0.114,0.465,0.114c0.199,0,0.397-0.06,0.568-0.177l29-20
                         c0.271-0.187,0.432-0.494,0.432-0.823S36.338,20.363,36.068,20.176z" />
                         </svg>
-                    </div>
-                </section> <!-- /#play -->
+					</div>
+				</section>
+				<!-- /#play -->
 
-                <section id="place" class="flex-loc-sa-c">
-                    <h1>Place</h1>
-                    <div class="round-btn" onclick="createEmptyBoard();">
-                        <svg width="40%" height="40%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px" y="0px" width="430.114px" height="430.114px" viewBox="0 0 430.114 430.114" style="enable-background:new 0 0 430.114 430.114;"
-                        xml:space="preserve">
+				<section id="place" class="flex-loc-sa-c">
+					<h1>Place</h1>
+					<div class="round-btn" onclick="createEmptyBoard();">
+						<svg width="40%" height="40%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="430.114px" height="430.114px" viewBox="0 0 430.114 430.114" style="enable-background:new 0 0 430.114 430.114;"
+						    xml:space="preserve">
                         <path id="Facebook_Places" d="M356.208,107.051c-1.531-5.738-4.64-11.852-6.94-17.205C321.746,23.704,261.611,0,213.055,0
                         C148.054,0,76.463,43.586,66.905,133.427v18.355c0,0.766,0.264,7.647,0.639,11.089c5.358,42.816,39.143,88.32,64.375,131.136
                         c27.146,45.873,55.314,90.999,83.221,136.106c17.208-29.436,34.354-59.259,51.17-87.933c4.583-8.415,9.903-16.825,14.491-24.857
@@ -47,15 +49,15 @@
                         c-1.538-4.2-1.414-12.617-1.414-13.388v-11.852c0-33.636,28.56-48.932,53.406-48.932c30.588,0,54.245,24.472,54.245,55.06
                         C270.138,174.729,244.833,199.193,214.245,199.193z" />
                         </svg>
-                    </div>
-                </section> <!-- /#place -->
+					</div>
+				</section>
+				<!-- /#place -->
 
-                <section id="score" class="flex-loc-sa-c">
-                    <h1>Score</h1>
-                    <div class="round-btn">
-                        <svg width="40%" height="40%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px" y="0px" width="475.084px" height="475.084px" viewBox="0 0 475.084 475.084" style="enable-background:new 0 0 475.084 475.084;"
-                        xml:space="preserve">
+				<section id="score" class="flex-loc-sa-c">
+					<h1>Score</h1>
+					<div class="round-btn">
+						<svg width="40%" height="40%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="475.084px" height="475.084px" viewBox="0 0 475.084 475.084" style="enable-background:new 0 0 475.084 475.084;"
+						    xml:space="preserve">
                         <path d="M467.087,99.355c-5.328-5.327-11.797-7.993-19.411-7.993h-82.228V63.955c0-12.562-4.466-23.313-13.415-32.261
                         c-8.945-8.945-19.704-13.417-32.264-13.417H155.318c-12.562,0-23.318,4.471-32.264,13.417
                         c-8.947,8.947-13.418,19.698-13.418,32.261v27.408H27.408c-7.612,0-14.083,2.663-19.414,7.993S0,111.158,0,118.772v36.544
@@ -73,14 +75,14 @@
                         c0,14.847-8.986,30.269-26.973,46.255c-17.994,15.987-40.406,26.743-67.239,32.261c14.086-30.833,21.125-66.14,21.125-105.924
                         h73.087V155.316z" />
                         </svg>
-                    </div>
-                </section> <!-- /#score -->
-                
-                <section id="about" class="flex-loc-sa-c">
-                    <h1>About</h1>
-                        <div class="round-btn">
-                        <svg width="40%" height="40%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        viewBox="0 0 111.577 111.577" style="enable-background:new 0 0 111.577 111.577;" xml:space="preserve">
+					</div>
+				</section>
+				<!-- /#score -->
+
+				<section id="about" class="flex-loc-sa-c">
+					<h1>About</h1>
+					<div class="round-btn">
+						<svg width="40%" height="40%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 111.577 111.577" style="enable-background:new 0 0 111.577 111.577;" xml:space="preserve">
                         <g>
                         <path d="M78.962,99.536l-1.559,6.373c-4.677,1.846-8.413,3.251-11.195,4.217c-2.785,0.969-6.021,1.451-9.708,1.451
                         c-5.662,0-10.066-1.387-13.207-4.142c-3.141-2.766-4.712-6.271-4.712-10.523c0-1.646,0.114-3.339,0.351-5.064
@@ -94,82 +96,145 @@
                         c-3.835,0-7.111-1.266-9.854-3.796c-2.738-2.522-4.11-5.587-4.11-9.177c0-3.583,1.372-6.654,4.11-9.207
                         C59.447,1.274,62.729,0,66.563,0c3.822,0,7.091,1.277,9.803,3.823C79.087,6.376,80.438,9.448,80.438,13.03z"/>
                         </svg>
-                    </div>
-                </section> <!-- /#about -->
-            </section> <!-- /.flex-row-sa-c -->
-            </section> <!-- /.container flex-col-sa-c -->
-        </section> <!-- /#welcome -->
-    </section>
+					</div>
+				</section>
+				<!-- /#about -->
+			</section>
+			<!-- /.flex-row-sa-c -->
+		</section>
+		<!-- /.container flex-col-sa-c -->
+	</section>
+	<!-- /#welcome -->
 
-    <section id="play-options" class="window flex-col-sa-c">
-        <section class="container flex-col-sa-c">
-            <h1>Choose options:</h1>
-                <section class="flex-col-sa-s">
-                    <section class="margin-t-b">
-                        <label for="default-gap">Default Gap (middle board)</label>
-                        <input id="default-gap" type="radio" name="gap" value="pos-4-4" required checked>
-                    </section>
-                    <section class="margin-t-b">
-                        <label for="random-gap">Random Gap</label>
-                        <input id="random-gap" type="radio" name="gap" value="random" required>
-                    </section>
-                    <section class="margin-t-b">
-                        <label for="timer-option">Time (in minutes):</label>
-                        <input id="timer-option" type="number" name="timer-option" placeholder="0 or blank timeless" required>
-                    </section>
-                    <section class="flex-row-sa-c">
-                        <a href="index.html">
-                            <button class="radius-btn margin-r-l ">Back</button>
-                        </a>
-                        <button class="radius-btn margin-r-l " onclick="createBoard()">Play!</button>
-                    </section>
-                </section>
-        </section>
-    </section>
+	<section id="play-options" class="window flex-col-sa-c">
+		<section class="container flex-col-c-c">
+			<h1>Choose options:</h1>
+			<section class="flex-col-sa-s">
+				<section class="margin-t-b">
+					<label for="default-gap">Default Gap (middle board)</label>
+					<input id="default-gap" type="radio" name="gap" value="pos-4-4" required checked>
+				</section>
+				<section class="margin-t-b">
+					<label for="random-gap">Random Gap</label>
+					<input id="random-gap" type="radio" name="gap" value="random" required>
+				</section>
+				<section class="margin-t-b">
+					<label for="timer-option">Time (in seconds):</label>
+					<input id="timer-option" type="number" name="timer-option" placeholder="0 or blank timeless" required>
+				</section>
+				<section class="flex-row-sa-c">
+					<a href="index.html">
+						<button class="radius-btn margin-r-l ">Back</button>
+					</a>
+					<button class="radius-btn margin-r-l " onclick="createBoard()">Play!</button>
+				</section>
+			</section>
+		</section>
+	</section>
+	<!-- /#play-options -->
 
-    <section id="play-container" class="window flex-col-c-s">
-            <section class="flex-row-c-s">
-                <section id="play-back" class="flex-row-c-c">
-                    <a href="index.html">
-                        <svg width="20%" height="20%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        width="460.298px" height="460.297px" viewBox="0 0 460.298 460.297" style="enable-background:new 0 0 460.298 460.297;"
-                        xml:space="preserve">
-                        <path d="M230.149,120.939L65.986,256.274c0,0.191-0.048,0.472-0.144,0.855c-0.094,0.38-0.144,0.656-0.144,0.852v137.041
-                        c0,4.948,1.809,9.236,5.426,12.847c3.616,3.613,7.898,5.431,12.847,5.431h109.63V303.664h73.097v109.64h109.629
-                        c4.948,0,9.236-1.814,12.847-5.435c3.617-3.607,5.432-7.898,5.432-12.847V257.981c0-0.76-0.104-1.334-0.288-1.707L230.149,120.939
-                        z"/>
-                        <path d="M457.122,225.438L394.6,173.476V56.989c0-2.663-0.856-4.853-2.574-6.567c-1.704-1.712-3.894-2.568-6.563-2.568h-54.816
-                        c-2.666,0-4.855,0.856-6.57,2.568c-1.711,1.714-2.566,3.905-2.566,6.567v55.673l-69.662-58.245
-                        c-6.084-4.949-13.318-7.423-21.694-7.423c-8.375,0-15.608,2.474-21.698,7.423L3.172,225.438c-1.903,1.52-2.946,3.566-3.14,6.136
-                        c-0.193,2.568,0.472,4.811,1.997,6.713l17.701,21.128c1.525,1.712,3.521,2.759,5.996,3.142c2.285,0.192,4.57-0.476,6.855-1.998
-                        L230.149,95.817l197.57,164.741c1.526,1.328,3.521,1.991,5.996,1.991h0.858c2.471-0.376,4.463-1.43,5.996-3.138l17.703-21.125
-                        c1.522-1.906,2.189-4.145,1.991-6.716C460.068,229.007,459.021,226.961,457.122,225.438z"/>
-                        </svg>
-                    </a>
-                </section>
-                <section id="play-timer" class="flex-row-c-c">
-                    <h1>Timer: <span id="display-time"></span></h1>
-                </section>
-                <section id="play-score" class="flex-row-c-c">
-                    <h1>Score: <span id="display-score"></span></h1>
-                </section>
-            </section>
-            <div id="board" class="flex-col-c-c"></div>
-    </section> <!-- /#game-container -->
+	<section id="play-container" class="window flex-col-c-s">
+		<section class="flex-row-c-s">
+			<section id="play-back" class="flex-row-c-c">
+				<a href="index.html">
+					<svg width="20%" height="20%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="460.298px" height="460.297px" viewBox="0 0 460.298 460.297" style="enable-background:new 0 0 460.298 460.297;"
+					    xml:space="preserve">
+                    <path d="M230.149,120.939L65.986,256.274c0,0.191-0.048,0.472-0.144,0.855c-0.094,0.38-0.144,0.656-0.144,0.852v137.041
+                    c0,4.948,1.809,9.236,5.426,12.847c3.616,3.613,7.898,5.431,12.847,5.431h109.63V303.664h73.097v109.64h109.629
+                    c4.948,0,9.236-1.814,12.847-5.435c3.617-3.607,5.432-7.898,5.432-12.847V257.981c0-0.76-0.104-1.334-0.288-1.707L230.149,120.939
+                    z"/>
+                    <path d="M457.122,225.438L394.6,173.476V56.989c0-2.663-0.856-4.853-2.574-6.567c-1.704-1.712-3.894-2.568-6.563-2.568h-54.816
+                    c-2.666,0-4.855,0.856-6.57,2.568c-1.711,1.714-2.566,3.905-2.566,6.567v55.673l-69.662-58.245
+                    c-6.084-4.949-13.318-7.423-21.694-7.423c-8.375,0-15.608,2.474-21.698,7.423L3.172,225.438c-1.903,1.52-2.946,3.566-3.14,6.136
+                    c-0.193,2.568,0.472,4.811,1.997,6.713l17.701,21.128c1.525,1.712,3.521,2.759,5.996,3.142c2.285,0.192,4.57-0.476,6.855-1.998
+                    L230.149,95.817l197.57,164.741c1.526,1.328,3.521,1.991,5.996,1.991h0.858c2.471-0.376,4.463-1.43,5.996-3.138l17.703-21.125
+                    c1.522-1.906,2.189-4.145,1.991-6.716C460.068,229.007,459.021,226.961,457.122,225.438z"/>
+                    </svg>
+				</a>
+			</section>
+			<section id="play-timer" class="flex-row-c-c">
+				<h1>Timer: <span id="display-time"></span></h1>
+			</section>
+			<section id="play-score" class="flex-row-c-c">
+				<h1>Score: <span id="display-score"></span></h1>
+			</section>
+		</section>
+		<div id="board" class="flex-col-c-c"></div>
+	</section>
+	<!-- /#play-container -->
 
-    <section id="place-options" class="wrapper">
-         <div id="empty-board" class="flex-col-c-c"></div>
-         <section id="start"></section>
-    </section> <!-- /#place-container -->    
+	<section id="place-options" class="window flex-col-c-s">
+		<section id="place-start" class="flex-row-c-c" onclick="choosePlaceOptions();">
+			<h1>Start!</h1>
+		</section>
+		<div id="empty-board" class="flex-col-c-c"></div>
+	</section>
+	<!-- /#place-options -->
 
-    <section id="place-container" class="wrapper">
-    </section> <!-- /#place-container -->    
+	<section id="place-other-options" class="window flex-col-sa-c">
+		<section class="container flex-col-c-c">
+			<h1>Choose options:</h1>
+			<section class="flex-col-sa-s">
+				<section class="margin-t-b">
+					<label for="place-timer-option">Time (in seconds):</label>
+					<input id="place-timer-option" type="number" name="place-timer-option" placeholder="0 or blank timeless" required>
+				</section>
+				<section class="flex-row-sa-c">
+					<a href="index.html">
+						<button class="radius-btn margin-r-l ">Back</button>
+					</a>
+					<button class="radius-btn margin-r-l " onclick="startGame()">Play!</button>
+				</section>
+			</section>
+		</section>
+	</section>
+	<!-- /#place-other-options -->
 
-    <section id="score-container" class="wrapper">
-    </section> <!-- /#score-container -->
+	<section id="place-container" class="window flex-col-c-s">
+		<section class="flex-row-c-s">
+			<section id="play-back" class="flex-row-c-c">
+				<a href="index.html">
+					<svg width="20%" height="20%" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="460.298px" height="460.297px" viewBox="0 0 460.298 460.297" style="enable-background:new 0 0 460.298 460.297;"
+					    xml:space="preserve">
+                    <path d="M230.149,120.939L65.986,256.274c0,0.191-0.048,0.472-0.144,0.855c-0.094,0.38-0.144,0.656-0.144,0.852v137.041
+                    c0,4.948,1.809,9.236,5.426,12.847c3.616,3.613,7.898,5.431,12.847,5.431h109.63V303.664h73.097v109.64h109.629
+                    c4.948,0,9.236-1.814,12.847-5.435c3.617-3.607,5.432-7.898,5.432-12.847V257.981c0-0.76-0.104-1.334-0.288-1.707L230.149,120.939
+                    z"/>
+                    <path d="M457.122,225.438L394.6,173.476V56.989c0-2.663-0.856-4.853-2.574-6.567c-1.704-1.712-3.894-2.568-6.563-2.568h-54.816
+                    c-2.666,0-4.855,0.856-6.57,2.568c-1.711,1.714-2.566,3.905-2.566,6.567v55.673l-69.662-58.245
+                    c-6.084-4.949-13.318-7.423-21.694-7.423c-8.375,0-15.608,2.474-21.698,7.423L3.172,225.438c-1.903,1.52-2.946,3.566-3.14,6.136
+                    c-0.193,2.568,0.472,4.811,1.997,6.713l17.701,21.128c1.525,1.712,3.521,2.759,5.996,3.142c2.285,0.192,4.57-0.476,6.855-1.998
+                    L230.149,95.817l197.57,164.741c1.526,1.328,3.521,1.991,5.996,1.991h0.858c2.471-0.376,4.463-1.43,5.996-3.138l17.703-21.125
+                    c1.522-1.906,2.189-4.145,1.991-6.716C460.068,229.007,459.021,226.961,457.122,225.438z"/>
+                    </svg>
+				</a>
+			</section>
+			<section id="play-timer" class="flex-row-c-c">
+				<h1>Timer: <span id="display-time-place"></span></h1>
+			</section>
+			<section id="play-score" class="flex-row-c-c">
+				<h1>Score: <span id="display-score-place"></span></h1>
+			</section>
+		</section>
+		<div id="place-board" class="flex-col-c-c"></div>
+	</section>
+	<!-- /#place-container -->
 
-    <section id="about-container" class="wrapper">
-    </section>  <!-- /#about-container -->   
+	<section id="score-container" class="window flex-col-c-s">
+	</section>
+	<!-- /#score-container -->
+
+	<section id="about-container" class="window flex-col-c-s">
+	</section>
+	<!-- /#about-container -->
+
+	<section id="credits" class="window flex-col-c-c">
+		<section class="container flex-col-c-c">
+			<h1>Thank you for your time!</h1>
+			<p>Javier García Valdepeñas</p>
+		</section>
+	</section>
+	<!-- /#credits -->
 
 </body>
 

@@ -6,11 +6,12 @@ var dragged; // The ball that is been dragged
 var ballsList; // All the elements with class='ball'
 var gapsList; // All the elements with class="gap"
 var neighbourGaps; // The immediate gap neighbours of clicked & dragged
-var gap;
-var time = 0;
-var score = 0;
-var displayTime;
-var displayScore; 
+var gap; // Gap element
+var time = -1; // Game timer: blank is limitless
+var score = 0; // Scoring sums +15 points when moving
+var displayTime; // #display-time element
+var displayScore; // #display-score element
+var countDown; // Count Down Interval
 
 function chooseOptions() {
     /*
@@ -48,7 +49,7 @@ function createBoard() {
     var board = document.getElementById('board');
     var html = "";
     var id = "";
-    
+
     // Building the board
     for (var row = 1; row <= 7; row++) {
         html += "<ul class='row'>"
@@ -70,12 +71,28 @@ function createBoard() {
 
     board.innerHTML = html;
     document.getElementById(gap).className = 'cell gap';
-    displayTime = document.getElementById('display-time');
+	displayTime = document.getElementById('display-time');
     displayScore = document.getElementById('display-score');
-    displayTime.appendChild(document.createTextNode(time));
+	countDown = setInterval(countDown, 1000);
+	displayTime.appendChild(document.createTextNode(time));
     ballsList = document.getElementsByClassName('ball');
     gapsList  = document.getElementsByClassName('gap');
 
+}
+
+function countDown() {
+	if (time >= 0) {
+		displayTime = document.getElementById('display-time').innerHTML = time--;
+	} else if (time < 0){
+		clearInterval(countDown);
+		alert('Se acabó el tiempo');
+		if(confirm('¿Ir a la página principal?')) {
+			window.location.reload(false);
+		} else {
+			document.getElementById('play-container').style.display = 'none';
+			document.getElementById('credits').style.display = 'flex';
+		}
+	}
 }
 
 function getPossibleMoves(cell) {
@@ -130,7 +147,7 @@ function showPossibleMoves(cell) {
                     document.getElementById(neighbourGaps[i]).style.border = 0;
                 }
             }
-            var popped = clicked.pop(); 
+            var popped = clicked.pop();
             if(popped.className == 'cell gap') {
                 popped.style.border = '5px solid #F1D67F';
             } else if(popped.className == 'cell ball') {
@@ -201,7 +218,7 @@ document.addEventListener("drop", function (event) {
     var column = dropColumn - dragColumn
     var id;
 
-    for(var i = 0; i < neighbourGaps.length; i++) { 
+    for(var i = 0; i < neighbourGaps.length; i++) {
         if(event.target.id == neighbourGaps[i]) {
             // The gap converts to a ball
             event.target.className = 'cell ball';
@@ -209,15 +226,16 @@ document.addEventListener("drop", function (event) {
             event.target.style.background = "url('images/ball.svg') center";
             event.target.style.backgroundSize = '6vh';
             event.target.style.backgroundRepeat = 'no-repeat';
-            event.target.addEventListener('onclick', showPossibleMoves);
-        
+            document.getElementById(neighbourGaps[i]).setAttribute('draggable', true);
+            event.target.addEventListener('click', function(){ showPossibleMoves(this) });
+
             // The dragged ball converts to a gap
             document.getElementById(dragged).className = 'cell gap';
             document.getElementById(dragged).style.border = '5px solid #F1D67F';
             document.getElementById(dragged).style.background = '#D8BF7D';
             document.getElementById(dragged).style.backgroundSize = 0;
             document.getElementById(dragged).style.backgroundRepeat = 0;
-            document.getElementById(dragged).removeEventListener('onclick', showPossibleMoves);
+            document.getElementById(dragged).removeEventListener('click', showPossibleMoves);
 
             // The ball in the middle gets eaten.
             switch(true) {
@@ -226,33 +244,34 @@ document.addEventListener("drop", function (event) {
                     document.getElementById(id).className = 'cell gap';
                     document.getElementById(id).style.border = '5px solid #F1D67F';
                     document.getElementById(id).style.background = '#D8BF7D';
-                    document.getElementById(id).removeEventListener('onclick', showPossibleMoves);
+                    document.getElementById(id).removeEventListener('click', showPossibleMoves);
                 break;
                 case row = 2 && column == 0:
                     id = "pos-" + parseInt(dragRow + 1) + "-" + parseInt(dragColumn);
                     document.getElementById(id).className = 'cell gap';
                     document.getElementById(id).style.border = '5px solid #F1D67F';
                     document.getElementById(id).style.background = '#D8BF7D';
-                    document.getElementById(id).removeEventListener('onclick', showPossibleMoves);
+                    document.getElementById(id).removeEventListener('click', showPossibleMoves);
                 break;
                 case row == 0 && column == -2:
                     id = "pos-" + parseInt(dragRow) + "-" + parseInt(dragColumn - 1);
                     document.getElementById(id).className = 'cell gap';
                     document.getElementById(id).style.border = '5px solid #F1D67F';
                     document.getElementById(id).style.background = '#D8BF7D';
-                    document.getElementById(id).removeEventListener('onclick', showPossibleMoves);
+                    document.getElementById(id).removeEventListener('click', showPossibleMoves);
                 break;
                 case row == 0 && column == 2:
                     id = "pos-" + parseInt(dragRow) + "-" + parseInt(dragColumn + 1);
                     document.getElementById(id).className = 'cell gap';
                     document.getElementById(id).style.border = '5px solid #F1D67F';
                     document.getElementById(id).style.background = '#D8BF7D';
-                    document.getElementById(id).removeEventListener('onclick', showPossibleMoves);
+                    document.getElementById(id).removeEventListener('click', showPossibleMoves);
                 break;
             }
             // If the movement is correct, sum +15 to score.
             score += 15;
             document.getElementById('display-score').innerHTML = score;
+			document.getElementById('display-score-place').innerHTML = score;
         }
     }
 
@@ -263,7 +282,7 @@ document.addEventListener("drop", function (event) {
         // Also, give the default border to all the gaps.
         for(var i = 0; i < gapsList.length; i++) {
             document.getElementById(gapsList[i].id).style.border = '5px solid #F1D67F';
-        }       
+        }
     }
 
 }, false);
