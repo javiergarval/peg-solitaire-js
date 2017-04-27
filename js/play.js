@@ -31,7 +31,7 @@ function createBoard() {
     } else if(document.getElementById('random-gap').checked == true) {
         var row = Math.floor((Math.random() * 7) + 1);
         var column = Math.floor((Math.random() * 7) + 1);
-        gap = "pos-" + row + "-" + column;
+		gap = "pos-" + row + "-" + column;
     }
 
     if(document.getElementById('timer-option').value != "") {
@@ -43,8 +43,6 @@ function createBoard() {
     // Display game container
     document.getElementById('play-options').style.display = 'none';
     document.getElementById('play-container').style.display = 'flex';
-
-    console.log(document.getElementById('display-score'));
 
     var board = document.getElementById('board');
     var html = "";
@@ -77,7 +75,6 @@ function createBoard() {
 	displayTime.appendChild(document.createTextNode(time));
     ballsList = document.getElementsByClassName('ball');
     gapsList  = document.getElementsByClassName('gap');
-
 }
 
 function countDown() {
@@ -85,8 +82,14 @@ function countDown() {
 		displayTime = document.getElementById('display-time').innerHTML = time--;
 	} else if (time < 0){
 		clearInterval(countDown);
-		alert('Se acabó el tiempo');
-		if(confirm('¿Ir a la página principal?')) {
+		if (ballsList.length == 1) {
+			score += 150;
+		} else {
+			score -= ballsList.length * 50;
+		}
+
+		alert('Time is over. Your puntuation is: ' + score);
+		if(confirm('Go to the main page?')) {
 			window.location.reload(false);
 		} else {
 			document.getElementById('play-container').style.display = 'none';

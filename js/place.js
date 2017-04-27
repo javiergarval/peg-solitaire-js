@@ -113,8 +113,14 @@ function placeCountDown() {
 		displayTime = document.getElementById('display-time-place').innerHTML = time--;
 	} else if (time < 0){
 		clearInterval(countDown);
-		alert('Se acabó el tiempo');
-		if(confirm('¿Ir a la página principal?')) {
+		if (ballsList.length == 1) {
+			score += 150;
+		} else {
+			score -= ballsList.length * 50;
+		}
+
+		alert('Time is over. Your puntuation is: ' + score);
+		if(confirm('Go to the main page?')) {
 			window.location.reload(false);
 		} else {
 			document.getElementById('place-container').style.display = 'none';
